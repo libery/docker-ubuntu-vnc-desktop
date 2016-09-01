@@ -44,6 +44,8 @@ ADD supervisord.conf /etc/supervisor/conf.d/
 ADD doro-lxde-wallpapers /usr/share/doro-lxde-wallpapers/
 ADD gtkrc-2.0 /home/ubuntu/.gtkrc-2.0
 
-EXPOSE 6080
+VOLUME [ "/var/crashplan", "/storage" ]
+
+EXPOSE 6080 4243 4242
 WORKDIR /root
 ENTRYPOINT ["/startup.sh"]
