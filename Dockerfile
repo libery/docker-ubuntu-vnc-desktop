@@ -39,6 +39,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 ADD /files /tmp/installation
+# Increase max file watches
+# ADD /files/installation/60-max-user-watches.conf /etc/sysctl.d/60-max-user-watches.conf
+RUN chmod +x /tmp/installation/install.sh && sync && /tmp/installation/install.sh && rm -rf /tmp/installation
+
+
 ADD web /web/
 RUN pip install setuptools wheel && pip install -r /web/requirements.txt
 
