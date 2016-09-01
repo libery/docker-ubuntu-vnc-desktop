@@ -1,5 +1,5 @@
 FROM ubuntu:14.04.3
-MAINTAINER Doro Wu <fcwu.tw@gmail.com>
+MAINTAINER VOICE1 <voice1me@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /home/ubuntu
@@ -32,6 +32,7 @@ RUN apt-get update \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
 
+ADD /files /tmp/installation
 ADD web /web/
 RUN pip install setuptools wheel && pip install -r /web/requirements.txt
 
@@ -50,5 +51,7 @@ ADD gtkrc-2.0 /home/ubuntu/.gtkrc-2.0
 VOLUME [ "/var/crashplan", "/storage" ]
 
 EXPOSE 6080 4243 4242
-WORKDIR /root
-ENTRYPOINT ["/startup.sh"]
+WORKDIR /usr/local/crashplan
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/crashplan.sh", "/startup.sh"]
