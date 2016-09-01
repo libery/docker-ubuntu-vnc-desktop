@@ -2,7 +2,13 @@ FROM ubuntu:14.04.3
 MAINTAINER VOICE1 <voice1me@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV HOME /home/ubuntu
+ENV HOME=/home/ubuntu \
+    CRASHPLAN_VERSION=5.3.0 \
+    CRASHPLAN_SERVICE=Code42CrashPlan \
+    CRASHPLAN_INSTALLER=http://hosted.dfatech.ca:4280/client/installers/Code42CrashPlan_5.3.0_1452924000530_344_Linux.tgz \
+    LC_ALL=C.UTF-8  \
+    LANG=C.UTF-8    \
+    LANGUAGE=C.UTF-8
 
 # built-in packages
 RUN apt-get update \
