@@ -25,6 +25,7 @@ RUN apt-get update \
         libgconf-2-4 \
         libnss3 \
         expect \
+        wget \
         lxde x11vnc xvfb \
         gtk2-engines-murrine ttf-ubuntu-font-family \
         firefox \
